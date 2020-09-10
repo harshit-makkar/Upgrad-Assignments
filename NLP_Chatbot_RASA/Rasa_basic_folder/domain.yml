@@ -1,0 +1,93 @@
+actions:
+- action_search_restaurants
+- action_send_mail
+- utter_ask_cuisine
+- utter_ask_howcanhelp
+- utter_ask_location
+- utter_ask_mail
+- utter_default
+- utter_goodbye
+- utter_greet
+- utter_nonoperational
+- utter_price_range
+- utter_send_mail
+entities:
+- cuisine
+- email
+- location
+- location_not_found
+- non_location
+- people
+- price
+intents:
+- greet
+- decline
+- restaurant_search
+- mail
+- affirm
+- goodbye
+- stop
+responses:
+  utter_ask_cuisine:
+  - buttons:
+    - payload: chinese
+      title: Chinese
+    - payload: italian
+      title: Italian
+    - payload: south indian
+      title: South Indian
+    - payload: north indian
+      title: North Indian
+    - payload: mexican
+      title: Mexican
+    - payload: american
+      title: American
+    text: what kind of cuisine would you like?
+  utter_ask_howcanhelp:
+  - text: Hi, how can I help you?
+  utter_ask_location:
+  - text: In what location?
+  utter_ask_mail:
+  - text: Share the email
+  utter_default:
+  - text: i cannot understand
+  utter_goodbye:
+  - text: goodbye :(
+  - text: Bye-bye
+  utter_greet:
+  - text: hey there! How may i help you
+  - text: Hi, How can I help you!
+  - text: Hey, How is it going. How May I help you Today
+  utter_nonoperational:
+  - text: Sorry to let you know that we do not operate in this area. Please specify
+      some other location.
+  utter_price_range:
+  - buttons:
+    - payload: '/restaurant_search{"price": "1"}'
+      title: Lesser than Rs. 300
+    - payload: '/restaurant_search{"price": "2"}'
+      title: Rs. 300 to 700
+    - payload: '/restaurant_search{"price": "3"}'
+      title: More than 700
+    text: In which price range?
+  utter_send_mail:
+  - text: Should a mail be sent?
+session_config:
+  carry_over_slots_to_new_session: true
+  session_expiration_time: 0
+slots:
+  cuisine:
+    type: text
+  email:
+    type: text
+  location:
+    type: text
+  non_location:
+    type: text
+  price:
+    type: categorical
+    values:
+    - '1'
+    - '2'
+    - '3'
+    - __other__
